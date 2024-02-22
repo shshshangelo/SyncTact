@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="clinic.css"> <!-- You can create a separate CSS file for styling -->
+	    <link rel="icon" href="images/favicon.png" type="image/png">
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/normalize.css@latest/normalize.css" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+<header>
+		        <img src="images/navbar.png" alt="Navbar Image" class="navbar-image">
+
+    <div class="container">
+        <nav>
+        <ul>
+            <li><a href="clinic.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li id="profileLink" style="display:none;"><a href="patients.html">Patient's List</a></li>
+            <li id="loginLogoutLink"><a href="login.html">Login</a></li>
+        </ul>
+        </nav>
+    </div>
+	
+</header>
+
+				<br>
+
+<style>
+/* Scroll-to-top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .scroll-to-top:hover {
+            background-color: #0056b3;
+        }
+		
+.team-image {
+    width: 150%;
+    max-width: 700px; /* Adjust max-width as needed */
+    display: block;
+    border: 2px solid #000; /* You can adjust the width and color of the border */
+}
+
+		
+    </style>
+
+<section id="about">
+    <div class="container">
+        <h2>VISION</h2>
+        <p>To be a leading provider of neurological physical therapy dedicated to enhancing the quality of life for patients with neurological conditions  through collaborative goal setting, evidence-based interventions, and cutting-edge technology, ensuring their active participation in every step of their recovery journey.
+</p>		<br>
+<h2>MISSION</h2>
+<p>Our team focuses on patient-centered rehabilitation, crafting tailored care plans for diverse needs. We prioritize excellence, continuously improving patient outcomes through innovative approaches. Our culture fosters research and innovation in neurological rehabilitation, aiming to pioneer breakthroughs and excel in medical research and education.
+</p>
+<br>
+			        <center><img src="images/team.jpg" alt="Team Image" class="team-image"></center>			
+
+<br>
+<h2>CORE VALUES</h2>
+<h1>Synergy, Connection, Teamwork, Accountability, Continuous Improvement, Trust </h1>
+<p>At the heart of our organization lies a steadfast commitment to synergy through connection and teamwork, encapsulated in our core value: SYNCTACT. We believe in the transformative power of synergy, where collaboration among team members and stakeholders amplifies our collective impact and drives innovation. By fostering genuine connections with our clients, colleagues, and partners, we lay the groundwork for trust, empathy, and mutual respect. Through the ethos of teamwork, we harness the diverse strengths and perspectives of each individual, working collaboratively to achieve our shared goals and uphold the highest standards of accountability. Embracing a culture of continuous improvement, we remain agile and responsive, continuously seeking new ways to enhance our services and outcomes. At the heart of it all is trust – the foundation of our relationships and the hallmark of our integrity and professionalism. Together, through SYNCTACT, we strive to make a meaningful difference in the lives of those we serve, driven by our unwavering dedication to excellence and compassion.
+
+    </div>
+</section>
+
+
+<script>
+    // Function to scroll to the top of the page
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Function to show/hide scroll-to-top button based on scroll position
+    window.onscroll = function() {
+        const scrollButton = document.querySelector('.scroll-to-top');
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollButton.style.display = 'block';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    };
+
+    // Check if the user is logged in
+    const userDataJson = localStorage.getItem('registrationData');
+    if (userDataJson) {
+        // User is logged in
+        updateLoggedInUI();
+    } else {
+        // User is logged out
+        updateLoggedOutUI();
+    }
+
+    // Function to update UI for logged in user
+    function updateLoggedInUI() {
+        const loginLogoutLink = document.getElementById('loginLogoutLink');
+        loginLogoutLink.innerHTML = '<a href="javascript:void(0);" onclick="logout()">Logout</a>';
+        const profileLink = document.getElementById('profileLink');
+        profileLink.style.display = 'inline';
+    }
+
+    // Function to update UI for logged out user
+    function updateLoggedOutUI() {
+        const loginLogoutLink = document.getElementById('loginLogoutLink');
+        loginLogoutLink.innerHTML = '<a href="login.html">Login</a>';
+        const profileLink = document.getElementById('profileLink');
+        profileLink.style.display = 'none'; // Hide profile link when logged out
+    }
+</script>
+
+<script>
+function logout() {
+    // Save the user's email and password before logging out
+    const email = localStorage.getItem('email');
+    const password = localStorage.getItem('password');
+    
+    if (email) {
+        localStorage.setItem('lastLoggedInUserEmail', email);
+    }
+
+    if (password) {
+        localStorage.setItem('lastLoggedInUserPassword', password);
+    }
+    
+    // Redirect to login page
+    window.location.href = 'login.html';
+}
+
+</script>
+
+	
+<button class="scroll-to-top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 SyncTact - NeuroRehab Therapy Clinic. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

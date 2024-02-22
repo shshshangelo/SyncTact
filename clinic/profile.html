@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient's Profile</title>
+    <link rel="stylesheet" href="clinic.css"> <!-- You can link your CSS file here -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+	  <link href="https://cdn.jsdelivr.net/npm/normalize.css@latest/normalize.css" rel="stylesheet">
+	  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+    <style>
+        /* CSS for input fields and dropdown menu */
+        input[type="text"],
+        select,
+        input[type="date"] {
+            width: calc(50% - 10px); /* Adjust the width as needed */
+            padding: 5px; /* Adjust the padding as needed */
+            font-size: px; /* Adjust the font size as needed */
+            margin-bottom: 5px; /* Add margin bottom */
+        }
+
+        /* Two-column layout */
+        .input-column {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .input-column > div {
+            flex: 1 1 calc(50% - 10px); /* Adjust the width of each column */
+            margin-right: 10px; /* Adjust the space between columns */
+        }
+
+        /* Clearfix */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+		        /* Style for the anchor tag */
+        .go-back-button {
+            display: inline-block;
+            padding: 5px 16px;
+            background-color: #4CAF50;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Style for the anchor tag on hover */
+        .go-back-button:hover {
+            background-color: #e0e0e0;
+        }
+
+
+/* Scroll-to-top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .scroll-to-top:hover {
+            background-color: #0056b3;
+        }
+		     .login-image {
+            width: 100%;
+            max-width: 500px; /* Adjust max-width as needed */
+            display: block;
+            margin: 0 auto 20px; /* Center image horizontally and add some bottom margin */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <img src="images/navbar.png" alt="Navbar Image" class="navbar-image">
+    <div class="container">
+        <nav>
+        <ul>
+            <li><a href="clinic.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li id="profileLink" style="display:none;"><a href="patients.html">Patient's List</a></li>
+            <li id="loginLogoutLink"><a href="login.html">Logout</a></li>
+            <li id="registerLink" style="display:none;"><a href="register.html">Register</a></li>
+        </ul>
+        </nav>
+    </div>
+</header>
+
+
+
+<section id="profile">
+    <div class="container">
+        <h2>Patient's Profile</h2>
+        <form id="profileForm">
+            <div class="input-column clearfix">
+                <div>
+				    <label for="patient-name">Patient Full Name:</label>
+                    <input type="text" id="patient-name" name="patient-name" placeholder="Enter Patient Full Name">
+					<label for="address">Full Address:</label>
+                    <input type="text" name="address" placeholder="Enter Full Address">
+					<label for="referring_unit">Referring Unit:</label>
+                    <input type="text" name="referring_unit" placeholder="Enter Referring Unit">
+					<label for="rehab_doctor">Rehab. Doctor:</label>
+                    <input type="text" name="rehab_doctor" placeholder="Enter Rehab. Doctor">
+                    <label for="date_admission">Date of Admission/Consultation:</label>
+                    <input type="date" id="birthdate" name="date_admission" placeholder="Date of Admission/Consultation">
+                </div>
+                <div>
+                    <label for="birthdate">Birthdate: </label>
+                    <input type="date" id="birthdate" name="birthdate" placeholder="Birthdate">
+					<br>
+					 <label for="age">Age: </label>
+                    <input type="text" name="age" placeholder="Age">
+                    <label for="gender">Gender:</label>
+                    <select name="gender">
+                        <option value="" disabled selected hidden>Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <br>
+                    <label for="civil_status">Civil Status:</label>
+                    <select name="civil_status">
+                        <option value="" disabled selected hidden>Civil Status</option>
+                        <option value="single">Single</option>
+                        <option value="rs">In a Relationship</option>
+                        <option value="married">Married</option>
+                        <option value="separated">Separated</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                        <option value="engaged">Engaged</option>
+                        <option value="domestic_partnership">Domestic Partnership</option>
+                        <option value="civil_union">Civil Union</option>
+                        <option value="common_law_marriage">Common-law Marriage</option>
+                        <option value="other">Other</option>
+                    </select>
+					<br>
+										 <label for="referring_doctor">Referring Doctor: </label>
+                    <input type="text" name="referring_doctor" placeholder="Enter Referring Doctor">
+                    <label for="date_referral">Date of Referral/IE:</label>
+                    <input type="date" id="birthdate" name="date_referral" placeholder="Date of Referral/IE">
+                </div>
+            </div>
+													 <label for="handedness">Handedness: </label>
+
+            <input type="text" name="handedness" placeholder="Enter Handedness">
+													 <label for="occupation">Occupation: </label>
+
+            <input type="text" name="occupation" placeholder="Enter Occupation">
+													 <label for="dx">Dx: </label>
+
+            <input type="text" name="dx" placeholder="Enter Dx">
+													 <label for="informant">Informant: </label>
+
+            <input type="text" name="informant" placeholder="Enter Informant">
+													 <label for="reliability">Reliability: </label>
+
+            <input type="text" name="reliability" placeholder="Enter Reliability">
+													 <label for="txdone">TX Done: </label>
+
+			<input type="text" name="txdone" placeholder="Enter TX Done">
+													 <label for="ptincharge">PT In-Charge: </label>
+
+            <input type="text" name="ptincharge" placeholder="Enter PT In-Charge">
+			
+            <button type="submit">Save</button>
+            <a href="patients.html" class="go-back-button">Go Back</a>
+        </form>
+
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 SyncTact - NeuroRehab Therapy Clinic. All rights reserved.</p>
+    </div>
+</footer>
+
+<button class="scroll-to-top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+
+
+<script>
+    // Function to scroll to the top of the page
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Function to show/hide scroll-to-top button based on scroll position
+    window.onscroll = function() {
+        const scrollButton = document.querySelector('.scroll-to-top');
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollButton.style.display = 'block';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    };
+</script>
+
+
+<script>
+    // Check if the user is logged in
+    const userDataJson = localStorage.getItem('registrationData');
+    if (userDataJson) {
+        // User is logged in
+        const loginLogoutLink = document.getElementById('loginLogoutLink');
+        loginLogoutLink.innerHTML = '<a href="javascript:void(0);" onclick="logout()">Logout</a>';
+        const profileLink = document.getElementById('profileLink');
+        profileLink.style.display = 'inline';
+    } else {
+        // User is logged out
+        const registerLink = document.getElementById('registerLink');
+        registerLink.style.display = 'inline';
+    }
+
+function logout() {
+    // Save the user's email before logging out
+    const userEmail = localStorage.getItem('userEmail');
+    if (userEmail) {
+        localStorage.setItem('lastLoggedInUserEmail', userEmail);
+    }
+
+    // Remove only authentication-related data
+    localStorage.removeItem('registrationData');
+
+    // Update UI to reflect logout state
+    const loginLogoutLink = document.getElementById('loginLogoutLink');
+    loginLogoutLink.innerHTML = '<a href="login.html">Login</a>'; // Resetting to login state
+
+    // No need to hide profile link or show register link
+    // as we're not clearing all data including the patient list
+}
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const profileForm = document.getElementById('profileForm');
+
+    // Check if there's a patient name query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const patientName = urlParams.get('patientName');
+    if (patientName) {
+        // Populate form fields with saved patient data
+        populateFormFields(patientName);
+    }
+
+    profileForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Get the form data
+        const formData = new FormData(profileForm);
+        const patientData = {};
+        formData.forEach((value, key) => {
+            patientData[key] = value;
+        });
+        
+        // Save patient data to localStorage
+        savePatientData(patientName, patientData);
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Success!',
+      text: 'Patient data saved successfully!'
+    });
+});
+    // Function to save patient data to localStorage
+    function savePatientData(patientName, data) {
+        localStorage.setItem(patientName, JSON.stringify(data));
+    }
+
+    // Function to retrieve patient data from localStorage
+    function getPatientData(patientName) {
+        const patientData = localStorage.getItem(patientName);
+        return patientData ? JSON.parse(patientData) : {};
+    }
+
+    // Function to populate form fields with saved patient data
+    function populateFormFields(patientName) {
+        const savedPatientData = getPatientData(patientName);
+        for (const key in savedPatientData) {
+            if (Object.hasOwnProperty.call(savedPatientData, key)) {
+                const value = savedPatientData[key];
+                const inputField = document.querySelector(`[name="${key}"]`);
+                if (inputField) {
+                    inputField.value = value;
+                }
+            }
+        }
+    }
+});
+</script>
+
+<script>
+// Check if the user is logged in
+const userDataJson = localStorage.getItem('registrationData');
+if (userDataJson) {
+    // User is logged in
+    const loginLogoutLink = document.getElementById('loginLogoutLink');
+    loginLogoutLink.innerHTML = '<a href="javascript:void(0);" onclick="logout()">Logout</a>';
+    const profileLink = document.getElementById('profileLink');
+    profileLink.style.display = 'inline';
+} else {
+    // User is logged out
+    const registerLink = document.getElementById('registerLink');
+    registerLink.style.display = 'inline';
+}
+
+    // Update UI to reflect logout state
+    const loginLogoutLink = document.getElementById('loginLogoutLink');
+    loginLogoutLink.innerHTML = '<a href="login.html">Login</a>'; // Resetting to login state
+
+    // No need to hide profile link or show register link
+    // as we're not clearing all data including the patient list
+}
+
+    // Function to logout
+    function logout() {
+        // Clear localStorage
+        localStorage.removeItem('registrationData');
+        localStorage.removeItem('email');
+        localStorage.removeItem('lastLoggedInUserEmail');
+
+        // Redirect to login.html
+        window.location.href = 'login.html';
+    }
+	</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const patientName = urlParams.get('patientName');
+    const patientNameInput = document.getElementById('patient-name');
+    if (patientName) {
+        patientNameInput.value = patientName;
+    }
+});
+</script>
+
+<script>
+function logout() {
+    // Save the user's email and password before logging out
+    const email = localStorage.getItem('email');
+    const password = localStorage.getItem('password');
+    
+    if (email) {
+        localStorage.setItem('lastLoggedInUserEmail', email);
+    }
+
+    if (password) {
+        localStorage.setItem('lastLoggedInUserPassword', password);
+    }
+    
+    // Redirect to login page
+    window.location.href = 'login.html';
+}
+
+</script>
+
+</body>
+</html>

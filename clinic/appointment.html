@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncTact - NeuroRehab Therapy Clinic</title>
+    <link rel="stylesheet" href="clinic.css"> <!-- You can create a separate CSS file for styling -->
+	    <link rel="icon" href="images/favicon.png" type="image/png">
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-b9JN87ojVl58moKVO7dXeD/AfWwHQh+OzGeRG9YmLWOznSuCPn1qPrhneG3I4xvx2RwLzlD/rdwq3U3MTjjZ9Q==" crossorigin="anonymous"
+
+
+</head>
+<body>
+
+<header>
+
+		        <img src="images/navbar.png" alt="Navbar Image" class="navbar-image">
+
+    <div class="container">
+        <nav>
+        <ul>
+            <li><a href="clinic.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li id="profileLink" style="display:none;"><a href="profile.html">Profile</a></li>
+            <li id="loginLogoutLink"><a href="login.html">Login</a></li>
+            <li id="registerLink" style="display:none;"><a href="register.html">Register</a></li>
+        </ul>
+        </nav>
+    </div>
+</header>
+
+
+<section id="contact">
+    <div class="container">
+        <h2>Schedule an Appointment</h2>
+        <a href="register.html" class="button">Schedule an Appointment</a> <!-- Updated link -->
+
+</section>
+
+<script>
+    // Check if the user is logged in
+    const userDataJson = localStorage.getItem('registrationData');
+    if (userDataJson) {
+        // User is logged in
+        const loginLogoutLink = document.getElementById('loginLogoutLink');
+        loginLogoutLink.innerHTML = '<a href="login.html" onclick="logout()">Logout</a>';
+        const profileLink = document.getElementById('profileLink');
+        profileLink.style.display = 'inline';
+        // Optionally, you can also hide the Register link if the user is logged in
+        const registerLink = document.getElementById('registerLink');
+        registerLink.style.display = 'none';
+    }
+
+    // Function to logout
+    function logout() {
+        localStorage.removeItem('registrationData');
+    }
+</script>
+
+<footer>
+    <div class="container">
+        <div class="contact-info">
+		    <p>Email: synctact.clinic@example.com</p>
+            <p>Mobile Number: +63 9950936179</p>
+            <p>Location: MEZ II, Tamiya, Basak, Lapu-Lapu City, Cebu, Philippines</p>
+        </div>
+    </div>
+        <p>&copy; 2024 SyncTact - NeuroRehab Therapy Clinic. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

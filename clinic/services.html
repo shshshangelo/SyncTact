@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="clinic.css"> <!-- You can create a separate CSS file for styling -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/normalize.css@latest/normalize.css" rel="stylesheet">
+
+
+
+    <style>
+        .slideshow-container {
+            max-width: 700px;
+            position: relative;
+            margin: auto;
+            border: 10px solid #black; /* Add border style */
+            border-radius: 20px; /* Add border radius */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust background color */
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+		
+.services-list {
+    columns: 2; /* Divide the list into two columns */
+    -webkit-columns: 2; /* For Safari/Chrome */
+    -moz-columns: 2; /* For Firefox */
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+}
+
+.services-list li {
+    margin-bottom: 10px; /* Add some bottom margin between list items */
+}
+
+.services-list li:before {
+    content: "\2022"; /* Add bullet character */
+    color: #007bff; /* Customize bullet color */
+    font-weight: bold; /* Make bullet bold */
+    display: inline-block;
+    width: 1em; /* Adjust spacing between bullet and text */
+    margin-left: -1em; /* Adjust spacing between bullet and text */
+}
+
+/* Scroll-to-top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .scroll-to-top:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="images/navbar.png" alt="Navbar Image" class="navbar-image">
+	
+    <div class="container">
+        <nav>
+        <ul>
+            <li><a href="clinic.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li id="profileLink" style="display:none;"><a href="patients.html">Patient's List</a></li>
+            <li id="loginLogoutLink"><a href="login.html">Login</a></li>
+        </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="services">
+    <div class="container">
+		<h2>Services offered and pricing</h2>
+		<!-- List of Services in Two Columns -->
+        <ul class="services-list">
+            <li>Manual Therapy Session (15 minutes)</li>
+			<p>Grand Opening Promo (30 minutes)</p>
+            <li>Virtual Consultation (1 hour)</li>
+            <li>Home Visit</li>
+            <li>Vestibular Rehabilitation</li>
+            <li>Craniosacral Therapy</li>
+            <li>Neurodevelopmental Treatment (NDT)</li>
+			<li>Hydrotherapy Sessions</li>
+            <li>Consultation from the neurologist</li>
+        </ul>
+		<br><br>
+
+        <div class="slideshow-container">
+            <div class="mySlides">
+                <img src="images/1.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <img src="images/2.jpg" style="width:100%">
+            </div>
+			            <div class="mySlides">
+                <img src="images/3.jpg" style="width:100%">
+            </div>
+			            <div class="mySlides">
+                <img src="images/4.jpg" style="width:100%">
+            </div>
+						            <div class="mySlides">
+                <img src="images/5.jpg" style="width:100%">
+            </div>
+						            <div class="mySlides">
+                <img src="images/6.jpg" style="width:100%">
+            </div>
+									            <div class="mySlides">
+                <img src="images/7.jpg" style="width:100%">
+            </div>						            <div class="mySlides">
+                <img src="images/8.jpg" style="width:100%">
+            </div>						            <div class="mySlides">
+                <img src="images/9.jpg" style="width:100%">
+            </div>
+
+            <!-- Add more slides as needed -->
+            <button class="prev" onclick="plusSlides(-1)">❮</button>
+            <button class="next" onclick="plusSlides(-1)">❯</button>
+        </div>
+		
+		<br>
+				<h2>Modalities</h2>
+		<!-- List of Services in Two Columns -->
+        <ul class="services-list">
+            <li>Transcutaneous Electrical Nerve Stimulation (TENS)
+</li>
+            <li>Neuromuscular Electrical Stimulation (NMES)
+</li>
+            <li>Functional Electrical Stimulation (FES)
+</li>
+            <li>Hot Pack
+</li>
+            <li>Cryotherapy
+</li>
+            <li>Biofeedback
+</li>
+			<li>Treadmill Training
+</li>
+            <li>Therapeutic Cycling
+</li>
+            <li>Lokomat (robotic gait training)
+</li>
+        </ul>
+		<br><br>
+
+				<h2>Packages</h2>
+			<ul class="services-list">
+            <li>8 session Package (mix of services, includes modalities</li>
+            <li>5  session Telerehab Package</li>
+        </ul>
+		<br><br>
+		
+        <h2>Contact Information</h2>
+        <p>Phone: +63 995-093-6179</p>
+        <p>Email: synctact.clinic@gmail.com</p>
+<p>Location: <a href="https://www.google.com/maps/place/Tamiya/@10.3017379,123.9626385,16z/data=!4m19!1m12!4m11!1m3!2m2!1d123.9645428!2d10.3021654!1m6!1m2!1s0x33a999ef7876ec2d:0xb839a805a7139b64!2s8X27%2BFX6,+Lapu-Lapu+City,+Cebu!2m2!1d123.9648906!2d10.3011625!3m5!1s0x33a999ef7876ec2d:0xb839a805a7139b64!8m2!3d10.3011625!4d123.9648906!16s%2Fg%2F1ts1k541?entry=ttu" target="_blank">MEPZ II, Tamiya, Basak, Lapu-Lapu City, Cebu, Philippines</a></p>
+    </div>
+</section>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 SyncTact - NeuroRehab Therapy Clinic. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+    }
+
+    // Automatic slideshow
+    setInterval(function() {
+        plusSlides(1);
+    }, 2000); // Change slide every 3 seconds
+</script>
+
+<script>
+    // Function to scroll to the top of the page
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Function to show/hide scroll-to-top button based on scroll position
+    window.onscroll = function() {
+        const scrollButton = document.querySelector('.scroll-to-top');
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollButton.style.display = 'block';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    };
+
+    // Check if the user is logged in
+    const userDataJson = localStorage.getItem('registrationData');
+    if (userDataJson) {
+        // User is logged in
+        updateLoggedInUI();
+    } else {
+        // User is logged out
+        updateLoggedOutUI();
+    }
+
+    // Function to update UI for logged in user
+    function updateLoggedInUI() {
+        const loginLogoutLink = document.getElementById('loginLogoutLink');
+        loginLogoutLink.innerHTML = '<a href="javascript:void(0);" onclick="logout()">Logout</a>';
+        const profileLink = document.getElementById('profileLink');
+        profileLink.style.display = 'inline';
+    }
+
+    // Function to update UI for logged out user
+    function updateLoggedOutUI() {
+        const loginLogoutLink = document.getElementById('loginLogoutLink');
+        loginLogoutLink.innerHTML = '<a href="login.html">Login</a>';
+        const profileLink = document.getElementById('profileLink');
+        profileLink.style.display = 'none'; // Hide profile link when logged out
+    }
+</script>
+
+<script>
+function logout() {
+    // Save the user's email and password before logging out
+    const email = localStorage.getItem('email');
+    const password = localStorage.getItem('password');
+    
+    if (email) {
+        localStorage.setItem('lastLoggedInUserEmail', email);
+    }
+
+    if (password) {
+        localStorage.setItem('lastLoggedInUserPassword', password);
+    }
+    
+    // Redirect to login page
+    window.location.href = 'login.html';
+}
+
+</script>
+	
+<button class="scroll-to-top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+</body>
+</html>

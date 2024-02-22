@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients</title>
+	
+    <link rel="stylesheet" href="clinic.css"> <!-- You can link your CSS file here -->
+	<link rel="icon" href="images/favicon.png" type="image/png">
+	
+    <!-- Add this line to your HTML file, preferably in the <head> section -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/normalize.css@latest/normalize.css" rel="stylesheet">
+  
+</head>
+<body>
+
+<style>
+/* Styles for the Remove and Edit buttons */
+.patient-item button {
+    font-size: 16px; /* Adjust the font size as needed */
+    padding: 5px 10px;
+    margin-left: 5px;
+    background-color: #ff6347; /* Red color for Remove button */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.patient-item button:hover {
+    background-color: #cc0000; /* Darker red color on hover for Remove button */
+}
+
+.patient-item button.edit-button {
+    background-color: #6495ed; /* Blue color for Edit button */
+}
+
+.patient-item button.edit-button:hover {
+    background-color: #4169e1; /* Darker blue color on hover for Edit button */
+}
+
+/* Increase text size */
+h1 {
+    font-size: 24px; /* Adjust the font size as needed */
+}
+</style>
+<header>
+    <img src="images/navbar.png" alt="Navbar Image" class="navbar-image">
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="clinic.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li id="profileLink" style="display:none;"><a href="patients.html">Patient's List</a></li>
+                <li id="loginLogoutLink"><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<h1>Add A Patient</h1>
+
+<form id="patient-form" action="profile.html" method="GET">
+    <input type="text" id="patient-name" name="patientName" placeholder="Patient Name">
+    <button type="submit">Add a Patient</button>
+</form>
+<br>
+
+<ul id="patients-list">
+    <!-- Patients will be dynamically added here -->
+</ul>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('patient-form');
+    const input = document.getElementById('patient-name');
+    const patientsList = document.getElementById('patients-list');
+
+    // Load patients from local storage on page load
+    loadPatientsFromStorage();
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const patientName = input.value.trim();
+        if (patientName !== '') {
+            addPatient(patientName);
+            input.value = '';
+            savePatientsToStorage(); // Save patients to local storage after addition
+            // Show SweetAlert message for successful addition
+            Swal.fire({
+                icon: 'success',
+                title: 'Patient Successfully Added!',
+                text: `${patientName} has been added to the patient's list.`,
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+
+    function addPatient(name) {
+        const li = document.createElement('li');
+        li.classList.add('patient-item');
+        
+        // Display patient's name
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = name;
+        li.appendChild(nameSpan);
+
+        // Create Remove button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Remove';
+        deleteButton.classList.add('delete-button');
+        deleteButton.addEventListener('click', function() {
+            li.remove();
+            savePatientsToStorage(); // Save patients to local storage after removal
+        });
+        li.appendChild(deleteButton);
+
+        // Create Edit button
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.classList.add('edit-button');
+editButton.addEventListener('click', function() {
+    const patientName = nameSpan.textContent; // Retrieve the patient name from the current context
+    window.location.href = `profile.html?patientName=${encodeURIComponent(patientName)}`;
+});
+
+        li.appendChild(editButton);
+
+        patientsList.appendChild(li);
+    }
+
+    function savePatientsToStorage() {
+        const patientItems = patientsList.querySelectorAll('.patient-item');
+        const patientNames = Array.from(patientItems).map(item => item.querySelector('span').textContent);
+        localStorage.setItem('patients', JSON.stringify(patientNames));
+    }
+
+    function loadPatientsFromStorage() {
+        const patientsData = localStorage.getItem('patients');
+        if (patientsData) {
+            const patientNames = JSON.parse(patientsData);
+            patientNames.forEach(name => addPatient(name));
+        }
+    }
+});
+
+// Check if the user is logged in
+const userDataJson = localStorage.getItem('registrationData');
+if (userDataJson) {
+    // User is logged in
+    const loginLogoutLink = document.getElementById('loginLogoutLink');
+    loginLogoutLink.innerHTML = '<a href="javascript:void(0);" onclick="logout()">Logout</a>';
+    const profileLink = document.getElementById('profileLink');
+    profileLink.style.display = 'inline';
+} else {
+    // User is logged out
+    const registerLink = document.getElementById('registerLink');
+    registerLink.style.display = 'inline';
+}
+
+function logout() {
+    // Save the user's email before logging out
+    const email = localStorage.getItem('email');
+    if (email) {
+        localStorage.setItem('lastLoggedInUserEmail', email);
+    }
+
+
+    // Update UI to reflect logout state
+    const loginLogoutLink = document.getElementById('loginLogoutLink');
+    loginLogoutLink.innerHTML = '<a href="login.html">Login</a>'; // Change "Logout" to "Login"
+
+    // Hide other links if needed
+    const profileLink = document.getElementById('profileLink');
+    profileLink.style.display = 'none';
+    const registerLink = document.getElementById('registerLink');
+    registerLink.style.display = 'none';
+
+    // Redirect to login.html
+    window.location.href = 'login.html';
+}
+
+</script>
+
+<script>
+editButton.addEventListener('click', function() {
+    const patientName = nameSpan.textContent; // Retrieve the patient name from the current context
+    window.location.href = `profile.html?patientName=${encodeURIComponent(patientName)}`;
+});
+</script>
+
+<script>
+function logout() {
+    // Save the user's email and password before logging out
+    const email = localStorage.getItem('email');
+    const password = localStorage.getItem('password');
+    
+    if (email) {
+        localStorage.setItem('lastLoggedInUserEmail', email);
+    }
+
+    if (password) {
+        localStorage.setItem('lastLoggedInUserPassword', password);
+    }
+    
+    // Redirect to login page
+    window.location.href = 'login.html';
+}
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="clinic.css"> <!-- You can create a separate CSS file for styling -->
+	    <link rel="icon" href="images/favicon.png" type="image/png">
+<!-- Add these lines to your <head> tag -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/normalize.css@latest/normalize.css" rel="stylesheet">
+
+</head>
+<body>
+
+<header>
+
+		        <img src="images/navbar.png" alt="Navbar Image" class="navbar-image">
+
+    <div class="container">
+        <nav>
+        <ul>
+            <li><a href="clinic.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li id="profileLink" style="display:none;"><a href="patients.html">Patient's List</a></li>
+            <li id="loginLogoutLink"><a href="login.html">Login</a></li>
+        </ul>
+        </nav>
+    </div>
+	
+</header>
+
+<style>
+.columns {
+    display: flex;
+}
+
+.column {
+    flex: 1;
+}
+
+/* Scroll-to-top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .scroll-to-top:hover {
+            background-color: #0056b3;
+        }
+
+		     .logo-image {
+            width: 100%;
+            max-width: 500px; /* Adjust max-width as needed */
+            display: block;
+            margin: 0 auto 5px; /* Center image horizontally and add some bottom margin */
+        }
+
+</style>
+
+<section id="home">
+    <div class="container">
+<p style="font-size: 1.5em; text-align: center; font-family: Arial, sans-serif; font-style: italic;">"Sync into Recovery with SyncTact"</p>
+
+        <h2>PHILOSOPHICAL STATEMENT</h2>
+		<h1>Holistic Harmony</h1>
+		<br>
+        <p>We believe in the intricate harmony between mind and body, guiding individuals through a holistic journey of neurological rehabilitation that transcends physical restoration to embrace emotional and spiritual well-being.</p>
+		<br>
+
+			        <img src="images/logo.png" alt="Logo Image" class="logo-image">
+
+
+<h2>LOGO</h2>
+<p>The logo for SyncTact is a powerful representation of the clinic's mission to help patients overcome neurological challenges and transform their lives. The S in SyncTact is designed to resemble the spinal vertebrae, which serves as the protective barrier of the spinal cord, whereas the wings symbolize hope, healing, and transformation. The circle around the logo represents unity, wholeness, and overall holistic practice, which is relevant to the cyclical rehabilitation process. Rather than using the original caduceus, the rod was replaced with the spinal cord, emphasizing the clinic's focus on neurorehabilitation. The spinal cord addition creates a more specific and direct representation of the clinic's commitment to treating spinal cord injuries and other neurological conditions. The logo embodies the hope and potential for progress in neurorehabilitation and underscores the supportive and comprehensive care provided by SyncTact to patients on their journeys toward healing and recovery.
+</p>
+<br>
+
+    </div>
+</section>
+
+<button class="scroll-to-top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 SyncTact - NeuroRehab Therapy Clinic. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Function to scroll to the top of the page
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Function to show/hide scroll-to-top button based on scroll position
+    window.onscroll = function() {
+        const scrollButton = document.querySelector('.scroll-to-top');
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollButton.style.display = 'block';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    };
+
+    // Check if the user is logged in
+    const userDataJson = localStorage.getItem('registrationData');
+    if (userDataJson) {
+        // User is logged in
+        updateLoggedInUI();
+    } else {
+        // User is logged out
+        updateLoggedOutUI();
+    }
+
+    // Function to update UI for logged in user
+    function updateLoggedInUI() {
+        const loginLogoutLink = document.getElementById('loginLogoutLink');
+        loginLogoutLink.innerHTML = '<a href="javascript:void(0);" onclick="logout()">Logout</a>';
+        const profileLink = document.getElementById('profileLink');
+        profileLink.style.display = 'inline';
+    }
+
+    // Function to update UI for logged out user
+    function updateLoggedOutUI() {
+        const loginLogoutLink = document.getElementById('loginLogoutLink');
+        loginLogoutLink.innerHTML = '<a href="login.html">Login</a>';
+
+    }
+	
+</script>
+
+<script>
+function logout() {
+    // Save the user's email and password before logging out
+    const email = localStorage.getItem('email');
+    const password = localStorage.getItem('password');
+    
+    if (email) {
+        localStorage.setItem('lastLoggedInUserEmail', email);
+    }
+
+    if (password) {
+        localStorage.setItem('lastLoggedInUserPassword', password);
+    }
+    
+    // Redirect to login page
+    window.location.href = 'login.html';
+}
+
+</script>
+
+
+</body>
+</html>

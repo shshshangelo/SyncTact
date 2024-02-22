@@ -1,0 +1,177 @@
+/* Reset default browser styles */
+body, h1, h2, h3, p, ul, li, form, input, textarea, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Container styles */
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/* Header styles */
+header {
+    background-color: #5dd9d2;
+    color: #fff;
+    padding: 20 20px; /* Increased padding for better spacing */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0; /* Remove default margin */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li:first-child {
+    margin-left: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Section styles */
+section {
+    padding: 40px 0;
+}
+
+section h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #0D7E84;
+}
+
+section p {
+    margin-bottom: 10px;
+}
+
+.navbar-image {
+    width: 50%;
+    max-width: 100px; /* Adjust max-width as needed */
+    display: block;
+    margin: 0 auto 5px; /* Center image horizontally and add some bottom margin */
+}
+
+/* Button styles */
+.button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+/* Form styles */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    nav {
+        text-align: right; /* Align navigation to the left */
+		        padding: 10px;
+
+    }
+
+    nav ul {
+        display: block;
+        text-align: right; /* Align navigation links to the left */
+    }
+
+    nav ul li {
+        display: block; /* Change display property to block to stack the links */
+        margin-left: 0; /* Remove the left margin */
+        margin-bottom: 10px; /* Add some bottom margin between links */
+    }
+	
+
+    section {
+        padding: 20px 0;
+    }
+
+    section h2 {
+        font-size: 24px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"],
+    form textarea {
+        width: 100%;
+    }
+}
